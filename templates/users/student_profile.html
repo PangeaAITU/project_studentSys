@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Student profile</h2>
+
+<p>Username: {{ request.user.username }}</p>
+
+<h3>Grades</h3>
+
+{% if grades %}
+    <ul>
+        {% for g in grades %}
+            <li>{{ g.subject.name }} — {{ g.value }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No grades yet</p>
+{% endif %}
+
+{% endblock %}
