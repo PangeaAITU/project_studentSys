@@ -2,20 +2,22 @@
 
 {% block content %}
 
-<h2>Student profile</h2>
+<div class="card">
+    <h2>Student profile</h2>
 
-<p>Username: {{ request.user.username }}</p>
+    <p>Username: <span class="badge">{{ request.user.username }}</span></p>
 
-<h3>Grades</h3>
+    <h3>Grades</h3>
 
-{% if grades %}
-    <ul>
-        {% for g in grades %}
-            <li>{{ g.subject.name }} — {{ g.value }}</li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No grades yet</p>
-{% endif %}
+    {% if grades %}
+        <div>
+            {% for g in grades %}
+                <div class="grade">{{ g.subject.name }} — <b>{{ g.value }}</b></div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No grades yet</p>
+    {% endif %}
+</div>
 
 {% endblock %}
