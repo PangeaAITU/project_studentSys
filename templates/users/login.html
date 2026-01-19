@@ -1,24 +1,46 @@
-{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login | Student Management System</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="bg">
 
-{% block content %}
-<div class="card">
-    <h2>Login</h2>
+<div class="login-box">
+
+    <div class="login-head">
+        <div class="login-logo">Student Management System</div>
+        <div class="login-sub">Sign in</div>
+    </div>
+
+    <div class="login-switch">
+        <a class="sw-btn active" href="/users/login/">User</a>
+        <a class="sw-btn" href="/admin/login/">Admin</a>
+    </div>
 
     {% if err %}
-        <p class="error">{{ err }}</p>
+        <div class="msg">{{ err }}</div>
     {% endif %}
 
     <form method="post">
         {% csrf_token %}
 
-        <p>Username</p>
-        <input class="inp" name="username">
+        <div class="field">
+            <div class="label">Username</div>
+            <input class="inp" name="username">
+        </div>
 
-        <p>Password</p>
-        <input class="inp" type="password" name="password">
+        <div class="field">
+            <div class="label">Password</div>
+            <input class="inp" type="password" name="password">
+        </div>
 
-        <br><br>
-        <button class="btn" type="submit">Log in</button>
+        <button class="btn w100" type="submit">Log in</button>
     </form>
+
 </div>
-{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="auth-box">
+    <h2>Register</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <input type="text" name="username" placeholder="Login" required>
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password1" placeholder="Password" required>
+        <input type="password" name="password2" placeholder="Repeat Password" required>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p>
+        Already have account?
+        <a href="/users/login/">Sign in</a>
+    </p>
+</div>
+
+</body>
+</html>
