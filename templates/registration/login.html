@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Register{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block content %}
 
@@ -9,12 +9,14 @@
     <div class="card shadow-sm">
       <div class="card-body">
 
-        <h4 class="mb-3 text-center">📝 Registration</h4>
+        <h4 class="mb-3 text-center">🔐 Login</h4>
 
         <form method="post">
           {% csrf_token %}
+
           {{ form.as_p }}
-          <button class="btn btn-success w-100">Create account</button>
+
+          <button class="btn btn-dark w-100">Login</button>
         </form>
 
       </div>

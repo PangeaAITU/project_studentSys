@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Students{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-3">Students</h2>
+
+<form class="row mb-3">
+  <div class="col-md-4">
+    <input 
+      type="text" 
+      name="search" 
+      value="{{ search }}" 
+      class="form-control" 
+      placeholder="Search by username..."
+    >
+  </div>
+
+  <div class="col-md-2">
+    <button class="btn btn-primary">Search</button>
+  </div>
+</form>
+
+<table class="table table-hover shadow-sm">
+  <thead class="table-dark">
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Grades</th>
+      <th>Profile</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for user in page_obj %}
+      <tr>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.grades_count }}</td>
+        <td>
+         <a href="{% url 'student_profile' user.id %}" class="btn btn-sm btn-outline-info">
+          Open
+         </a>
+        </td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="3">No students found</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<nav>
+  <ul class="pagination">
+
+    {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}&search={{ search }}">Previous</a>
+      </li>
+    {% endif %}
+
+    <li class="page-item active">
+      <span class="page-link">{{ page_obj.number }}</span>
+    </li>
+
+    {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}&search={{ search }}">Next</a>
+      </li>
+    {% endif %}
+
+  </ul>
+</nav>
+
+{% endblock %}
