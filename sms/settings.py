@@ -127,6 +127,22 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+
+    "users",
+    "grades",
+    "school",
+
+    "rest_framework",
+]
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
