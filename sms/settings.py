@@ -69,8 +69,7 @@ WSGI_APPLICATION = 'sms.wsgi.application'
 # Database
 DATABASES = {
     'default': dj_database_url.config(
-        conn_max_age=600,
-        ssl_require=True
+        default=f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}"
     )
 }
 
