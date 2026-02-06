@@ -1,25 +1,58 @@
 {% extends "base.html" %}
-{% block title %}Register{% endblock %}
+{% block title %}Register - StudentSys{% endblock %}
 
 {% block content %}
 
-<div class="row justify-content-center">
-  <div class="col-md-4">
-
-    <div class="card shadow-sm">
-      <div class="card-body">
-
-        <h4 class="mb-3 text-center">📝 Registration</h4>
-
-        <form method="post">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <button class="btn btn-success w-100">Create account</button>
-        </form>
-
-      </div>
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <div class="auth-icon">📝</div>
+      <h2>Create Account</h2>
+      <p>Join our student management system</p>
     </div>
 
+    <form method="post" class="auth-form">
+      {% csrf_token %}
+
+      {% if form.errors %}
+      <div class="alert alert-danger">
+        <strong>Error!</strong> Please fix the errors below.
+        {{ form.errors }}
+      </div>
+      {% endif %}
+
+      <div class="form-group">
+        <label for="{{ form.username.id_for_label }}">Username</label>
+        {{ form.username }}
+        {% if form.username.help_text %}
+        <small class="form-text">{{ form.username.help_text }}</small>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.password1.id_for_label }}">Password</label>
+        {{ form.password1 }}
+        {% if form.password1.help_text %}
+        <small class="form-text">{{ form.password1.help_text }}</small>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+        {{ form.password2 }}
+      </div>
+
+      <button type="submit" class="btn-auth btn-success">
+        <span>Create Account</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 0L6.59 1.41L12.17 7H0V9H12.17L6.59 14.59L8 16L16 8L8 0Z" fill="currentColor" />
+        </svg>
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      <p>Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
+    </div>
   </div>
 </div>
 

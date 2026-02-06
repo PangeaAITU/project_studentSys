@@ -1,77 +1,89 @@
 {% extends "base.html" %}
-{% block title %}Students{% endblock %}
+{% block title %}Students - StudentSys{% endblock %}
 
 {% block content %}
 
-<h2 class="mb-3">Students</h2>
-
-<form class="row mb-3">
-  <div class="col-md-4">
-    <input 
-      type="text" 
-      name="search" 
-      value="{{ search }}" 
-      class="form-control" 
-      placeholder="Search by username..."
-    >
+<div class="container my-5">
+  <div class="mb-4">
+    <h2 class="fw-bold" style="color: #2d3748;">👥 Students</h2>
+    <p class="text-muted">Manage and view all students</p>
   </div>
 
-  <div class="col-md-2">
-    <button class="btn btn-primary">Search</button>
+  <div class="search-container">
+    <form class="row align-items-center">
+      <div class="col-md-8">
+        <input type="text" name="search" value="{{ search }}" class="search-input" placeholder="Search by username...">
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-primary w-100" style="padding: 14px; border-radius: 12px;">
+          🔍 Search
+        </button>
+      </div>
+    </form>
   </div>
-</form>
 
-<table class="table table-hover shadow-sm">
-  <thead class="table-dark">
-    <tr>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Grades</th>
-      <th>Profile</th>
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Grades</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
 
-    </tr>
-  </thead>
+      <tbody>
+        {% for user in page_obj %}
+        <tr>
+          <td>
+            <strong style="color: #2d3748;">{{ user.username }}</strong>
+          </td>
+          <td>{{ user.email|default:"No email" }}</td>
+          <td>
+            <span class="badge badge-info">{{ user.grades_count }} grades</span>
+          </td>
+          <td>
+            <a href="{% url 'student_profile' user.id %}" class="btn btn-sm btn-primary" style="border-radius: 8px;">
+              View Profile
+            </a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="4" class="text-center text-muted">
+            <div style="padding: 40px;">
+              <div style="font-size: 3rem; margin-bottom: 16px;">🔍</div>
+              <p>No students found</p>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
-  <tbody>
-    {% for user in page_obj %}
-      <tr>
-        <td>{{ user.username }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.grades_count }}</td>
-        <td>
-         <a href="{% url 'student_profile' user.id %}" class="btn btn-sm btn-outline-info">
-          Open
-         </a>
-        </td>
-      </tr>
-    {% empty %}
-      <tr>
-        <td colspan="3">No students found</td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-<nav>
-  <ul class="pagination">
-
-    {% if page_obj.has_previous %}
+  {% if page_obj.has_previous or page_obj.has_next %}
+  <nav class="mt-4">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
       <li class="page-item">
         <a class="page-link" href="?page={{ page_obj.previous_page_number }}&search={{ search }}">Previous</a>
       </li>
-    {% endif %}
+      {% endif %}
 
-    <li class="page-item active">
-      <span class="page-link">{{ page_obj.number }}</span>
-    </li>
+      <li class="page-item active">
+        <span class="page-link">Page {{ page_obj.number }}</span>
+      </li>
 
-    {% if page_obj.has_next %}
+      {% if page_obj.has_next %}
       <li class="page-item">
         <a class="page-link" href="?page={{ page_obj.next_page_number }}&search={{ search }}">Next</a>
       </li>
-    {% endif %}
-
-  </ul>
-</nav>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+</div>
 
 {% endblock %}

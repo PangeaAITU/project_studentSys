@@ -6,14 +6,14 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import login_required
 from grades.models import Grade
-from .decorators import role_required
+from .decorators import role_required, exclude_role
 import logging
 
 logger = logging.getLogger(__name__)
 
 
 @login_required
-@role_required(["teacher", "admin"])
+@exclude_role(["student"])
 def student_list(request):
     """List all students with search and pagination."""
     search = request.GET.get("search", "")

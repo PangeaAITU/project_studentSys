@@ -1,66 +1,87 @@
 {% extends "base.html" %}
-{% block title %}Profile{% endblock %}
+{% block title %}{{ student.username }} - Profile{% endblock %}
 
 {% block content %}
 
-<div class="row mb-4">
-  <div class="col-md-4">
-    <div class="card shadow-sm">
-      <div class="card-body text-center">
+<div class="container my-5">
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-avatar">
+        {{ student.username|slice:":1"|upper }}
+      </div>
+      <div class="profile-info">
+        <h2>{{ student.username }}</h2>
+        <p>
+          <span class="badge badge-primary">{{ student.profile.role|title }}</span>
+        </p>
+      </div>
+    </div>
 
-        <img 
-          src="https://ui-avatars.com/api/?name={{ student.username }}&background=random" 
-          class="rounded-circle mb-3"
-          width="120"
-        >
+    <div class="profile-details">
+      <div class="profile-detail-item">
+        <strong>📧 Email</strong>
+        <span>{{ student.email|default:"No email" }}</span>
+      </div>
 
-        <h4>{{ student.username }}</h4>
-        <p class="text-muted">{{ student.profile.role }}</p>
-        <p>{{ student.email }}</p>
+      {% if avg_grade %}
+      <div class="profile-detail-item">
+        <strong>⭐ Average Grade</strong>
+        <span>{{ avg_grade|floatformat:2 }}</span>
+      </div>
+      {% endif %}
 
-        {% if avg_grade %}
-          <h5>⭐ Average: {{ avg_grade }}</h5>
-        {% else %}
-          <p>No grades yet</p>
-        {% endif %}
+      <div class="profile-detail-item">
+        <strong>📊 Total Grades</strong>
+        <span>{{ grades|length }}</span>
+      </div>
 
+      <div class="profile-detail-item">
+        <strong>👤 User ID</strong>
+        <span>#{{ student.id }}</span>
       </div>
     </div>
   </div>
 
-  <div class="col-md-8">
-    <div class="card shadow-sm">
-      <div class="card-body">
+  <div class="table-container">
+    <h5 class="mb-4" style="color: #2d3748; font-weight: 700;">📊 Grades History</h5>
 
-        <h5 class="mb-3">📊 Grades</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Grade</th>
+          <th>Letter</th>
+          <th>Date</th>
+        </tr>
+      </thead>
 
-        <table class="table table-sm table-hover">
-          <thead>
-            <tr>
-              <th>Subject</th>
-              <th>Grade</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {% for grade in grades %}
-              <tr>
-                <td>{{ grade.subject.name }}</td>
-                <td>{{ grade.value }}</td>
-                <td>{{ grade.created_at|date:"d.m.Y" }}</td>
-              </tr>
-            {% empty %}
-              <tr>
-                <td colspan="3">No grades</td>
-              </tr>
-            {% endfor %}
-          </tbody>
-
-        </table>
-
-      </div>
-    </div>
+      <tbody>
+        {% for grade in grades %}
+        <tr>
+          <td><strong>{{ grade.subject.name }}</strong></td>
+          <td>
+            <span
+              class="badge {% if grade.value >= 90 %}badge-success{% elif grade.value >= 70 %}badge-info{% elif grade.value >= 60 %}badge-warning{% else %}badge-danger{% endif %}">
+              {{ grade.value }}
+            </span>
+          </td>
+          <td>
+            <strong>{{ grade.get_letter_grade }}</strong>
+          </td>
+          <td>{{ grade.created_at|date:"d M Y" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="4" class="text-center text-muted">
+            <div style="padding: 40px;">
+              <div style="font-size: 3rem; margin-bottom: 16px;">📝</div>
+              <p>No grades yet</p>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
 </div>
 

@@ -3,78 +3,169 @@
 
 {% block content %}
 
-<div class="row mb-5">
-  <div class="col text-center">
-    <h1 class="display-4 fw-bold text-primary">🎓 Student Management System</h1>
-    <p class="lead text-muted">Smart solution for managing students, grades, and academic progress</p>
-  </div>
-</div>
+<!-- Hero Section with Full Screen -->
+<div class="hero-landing">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🎓 Education Platform</div>
+    <h1 class="hero-title">
+      Transform Your
+      <span class="gradient-text">Academic Journey</span>
+    </h1>
+    <p class="hero-subtitle">
+      The most powerful student management system designed for modern education.
+      Track progress, manage grades, and achieve excellence.
+    </p>
+    <div class="hero-buttons">
+      <a href="{% url 'register' %}" class="hero-btn hero-btn-primary">
+        <span>Get Started Free</span>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M10 0L8.59 1.41L14.17 7H0V9H14.17L8.59 14.59L10 16L18 8L10 0Z" fill="currentColor" />
+        </svg>
+      </a>
+      <a href="{% url 'login' %}" class="hero-btn hero-btn-secondary">
+        <span>Sign In</span>
+      </a>
+    </div>
 
-<div class="row mb-5">
-  <div class="col-lg-8 mx-auto">
-    <div class="card shadow-lg border-0">
-      <div class="card-body p-5">
-        <h2 class="card-title text-center mb-4">Site Features</h2>
-        <ul class="list-unstyled">
-          <li class="mb-3">
-            <strong>📚 Student Management:</strong> Comprehensive student profiles with personal information and academic records
-          </li>
-          <li class="mb-3">
-            <strong>📊 Grade Tracking:</strong> Real-time grade management with subject-wise analytics and performance statistics
-          </li>
-          <li class="mb-3">
-            <strong>🏫 Subject Organization:</strong> Structured subject catalog with detailed course information
-          </li>
-          <li class="mb-3">
-            <strong>👥 Role-Based Access:</strong> Secure access control for students, teachers, and administrators
-          </li>
-          <li class="mb-3">
-            <strong>📈 Analytics Dashboard:</strong> Visual insights into academic performance and progress tracking
-          </li>
-        </ul>
+    <!-- Stats -->
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Active Students</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Subjects</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Satisfaction</div>
       </div>
     </div>
   </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-arrow">↓</div>
+    <span>Scroll to explore</span>
+  </div>
 </div>
 
-<div class="row mb-5">
-  <div class="col-lg-8 mx-auto">
-    <div class="card shadow border-0 bg-light">
-      <div class="card-body p-5">
-        <h2 class="card-title text-center mb-4">Development Team</h2>
-        <p class="text-center text-muted mb-4">Created with dedication by:</p>
-        <div class="row text-center">
-          <div class="col-md-3 col-6 mb-3">
-            <div class="p-3 bg-white rounded shadow-sm">
-              <h5 class="mb-0">Ramazan</h5>
-            </div>
-          </div>
-          <div class="col-md-3 col-6 mb-3">
-            <div class="p-3 bg-white rounded shadow-sm">
-              <h5 class="mb-0">Mansur</h5>
-            </div>
-          </div>
-          <div class="col-md-3 col-6 mb-3">
-            <div class="p-3 bg-white rounded shadow-sm">
-              <h5 class="mb-0">Araylym</h5>
-            </div>
-          </div>
-          <div class="col-md-3 col-6 mb-3">
-            <div class="p-3 bg-white rounded shadow-sm">
-              <h5 class="mb-0">Daniya</h5>
-            </div>
-          </div>
+<!-- Features Section -->
+<div class="features-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Why Choose StudentSys?</h2>
+      <p>Everything you need to manage academic excellence in one place</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-box">
+          <div class="feature-icon">📊</div>
+          <h3>Smart Analytics</h3>
+          <p>Real-time insights into academic performance with beautiful visualizations and detailed reports.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-box">
+          <div class="feature-icon">🎯</div>
+          <h3>Grade Tracking</h3>
+          <p>Comprehensive grade management system with automatic calculations and progress monitoring.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-box">
+          <div class="feature-icon">🔒</div>
+          <h3>Secure Access</h3>
+          <p>Role-based permissions ensure data privacy and security for all users.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-box">
+          <div class="feature-icon">👥</div>
+          <h3>Student Profiles</h3>
+          <p>Detailed student information with academic history and personal records.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-box">
+          <div class="feature-icon">📚</div>
+          <h3>Subject Management</h3>
+          <p>Organized course catalog with comprehensive subject information and materials.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-box">
+          <div class="feature-icon">⚡</div>
+          <h3>Lightning Fast</h3>
+          <p>Optimized performance ensures quick access to all features and data.</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col text-center">
-    <p class="text-muted">Ready to get started?</p>
-    <a href="{% url 'login' %}" class="btn btn-primary btn-lg me-2">Login</a>
-    <a href="{% url 'register' %}" class="btn btn-outline-primary btn-lg">Register</a>
+<!-- Team Section -->
+<div class="team-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Meet Our Team</h2>
+      <p>Built with passion by talented developers</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-3 col-6">
+        <div class="team-card-new">
+          <div class="team-avatar">R</div>
+          <h4>Ramazan</h4>
+          <p>Lead Developer</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="team-card-new">
+          <div class="team-avatar">M</div>
+          <h4>Mansur</h4>
+          <p>Backend Developer</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="team-card-new">
+          <div class="team-avatar">A</div>
+          <h4>Araylym</h4>
+          <p>Frontend Developer</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="team-card-new">
+          <div class="team-avatar">D</div>
+          <h4>Daniya</h4>
+          <p>UI/UX Designer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Final CTA -->
+<div class="final-cta">
+  <div class="container text-center">
+    <h2>Ready to Transform Education?</h2>
+    <p>Join thousands of students and educators already using StudentSys</p>
+    <div class="cta-buttons">
+      <a href="{% url 'register' %}" class="cta-btn-large cta-primary">
+        Start Your Journey
+      </a>
+      <a href="{% url 'login' %}" class="cta-btn-large cta-secondary">
+        Sign In Now
+      </a>
+    </div>
   </div>
 </div>
 
