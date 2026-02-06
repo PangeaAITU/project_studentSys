@@ -1,5 +1,35 @@
-venv/
+# Python
+*.py[cod]
+*$py.class
 __pycache__/
 *.pyc
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Django
+*.log
 db.sqlite3
+db.sqlite3-journal
+/media
+/staticfiles
+
+# Environment variables
 .env
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Logs
+logs/
+*.log

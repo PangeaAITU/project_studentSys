@@ -8,7 +8,10 @@ from school.api import ClassRoomViewSet
 
 
 def home(request):
-    return render(request, "home.html")
+    if request.user.is_authenticated:
+        return render(request, "home.html")
+    else:
+        return render(request, "landing.html")
 
 
 urlpatterns = [

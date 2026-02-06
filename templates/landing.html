@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Welcome - StudentSys{% endblock %}
+
+{% block content %}
+
+<div class="row mb-5">
+  <div class="col text-center">
+    <h1 class="display-4 fw-bold text-primary">🎓 Student Management System</h1>
+    <p class="lead text-muted">Smart solution for managing students, grades, and academic progress</p>
+  </div>
+</div>
+
+<div class="row mb-5">
+  <div class="col-lg-8 mx-auto">
+    <div class="card shadow-lg border-0">
+      <div class="card-body p-5">
+        <h2 class="card-title text-center mb-4">Site Features</h2>
+        <ul class="list-unstyled">
+          <li class="mb-3">
+            <strong>📚 Student Management:</strong> Comprehensive student profiles with personal information and academic records
+          </li>
+          <li class="mb-3">
+            <strong>📊 Grade Tracking:</strong> Real-time grade management with subject-wise analytics and performance statistics
+          </li>
+          <li class="mb-3">
+            <strong>🏫 Subject Organization:</strong> Structured subject catalog with detailed course information
+          </li>
+          <li class="mb-3">
+            <strong>👥 Role-Based Access:</strong> Secure access control for students, teachers, and administrators
+          </li>
+          <li class="mb-3">
+            <strong>📈 Analytics Dashboard:</strong> Visual insights into academic performance and progress tracking
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-5">
+  <div class="col-lg-8 mx-auto">
+    <div class="card shadow border-0 bg-light">
+      <div class="card-body p-5">
+        <h2 class="card-title text-center mb-4">Development Team</h2>
+        <p class="text-center text-muted mb-4">Created with dedication by:</p>
+        <div class="row text-center">
+          <div class="col-md-3 col-6 mb-3">
+            <div class="p-3 bg-white rounded shadow-sm">
+              <h5 class="mb-0">Ramazan</h5>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 mb-3">
+            <div class="p-3 bg-white rounded shadow-sm">
+              <h5 class="mb-0">Mansur</h5>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 mb-3">
+            <div class="p-3 bg-white rounded shadow-sm">
+              <h5 class="mb-0">Araylym</h5>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 mb-3">
+            <div class="p-3 bg-white rounded shadow-sm">
+              <h5 class="mb-0">Daniya</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col text-center">
+    <p class="text-muted">Ready to get started?</p>
+    <a href="{% url 'login' %}" class="btn btn-primary btn-lg me-2">Login</a>
+    <a href="{% url 'register' %}" class="btn btn-outline-primary btn-lg">Register</a>
+  </div>
+</div>
+
+{% endblock %}
